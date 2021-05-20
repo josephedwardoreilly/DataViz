@@ -1,0 +1,77 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 700,
+  "height": 100, 
+  "title":{
+    "text": ["Daily Change In New Covid-19 Cases During The UK Second Wave - By Region"], 
+    "subtitle":["Hover over a bar to see case number details.", "Data from https://coronavirus.data.gov.uk - Visualisation by Joe O'Reilly - josephedwardoreilly.github.com"],
+    "subtitleFontStyle":"lighter"},
+
+  "view": {"stroke" : null},
+      "data": {
+        "url": "region_2021-05-12.csv"
+      },
+
+      "transform": [
+        {"filter": 
+          {"field": "date",
+           "range":
+            [{"year": 2020, "month": "nov", "date": 1},
+             {"year": 2021, "month": "mar", "date": 10}]}}
+      ],
+
+      "mark": {
+        "type": "rect",
+        "stroke":"white"}, 
+
+      "encoding": {
+        "row": {"field": "areaName",
+          "title":null,
+           "header":{
+             "labelFontSize": 15,
+             "labelFontStyle": "lighter",
+             "labelOrient": "top",
+             "labelAnchor": "end"}},
+        "x": {
+          "field": "date",
+          "timeUnit": "yearmonthdate",
+          "title":null,
+          "axis":{
+           "grid": false,
+           "ticks": true,
+           "tickWidth":1,
+           "labelFontStyle":"lighter"}},
+        "y": {
+          "field": "newCasesByPublishDateChangePercentage",
+          "type": "quantitative",
+          "axis":{
+            "domain": true, 
+            "orient":"right",
+            "grid": false,
+            "title":["% change", "in daily cases"],
+            "titleFontStyle":"lighter",
+            "ticks": true,
+            "tickWidth":1,
+            "labels": true}},
+      "color":{
+        "field":"newCasesByPublishDateChangePercentage",
+        "type": "quantitative",
+        "legend":null,
+        "scale": {
+          "type": "linear",
+          "range":["white", "#DA3B1B", "black"]}
+      },
+      "tooltip": [
+        {"field": "newCasesByPublishDateChangePercentage", "type": "quantitative", "title": "% change in new cases"},
+        {"field": "areaName", "type": "nominal", "title": "region"},
+        {"field": "date", "type": "temporal", "title": "date"}
+      ]
+    },
+      "resolve": {"axis": {"x": "independent"}},
+      "config": { 
+        "title": {"fontSize":20, "fontWeight":"lighter"},
+        "facet": { 
+          "spacing": 25
+        }
+      }
+}
