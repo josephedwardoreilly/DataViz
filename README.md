@@ -18,11 +18,13 @@ A mixture of dataviz things I have worked on. Mostly R, but with a little bit of
 
 ***
 
+### [COVID Test Positive Change, By Region](https://github.com/josephedwardoreilly/DataViz/tree/main/Covid_Case_Perc_Change) ‍ - Percentage daily change in COVID test positive rate, faceted by region (vega-lite)
+(<img src="https://raw.githubusercontent.com/josephedwardoreilly/DataViz/main/Covid_Case_Perc_Change/visualization.svg?sanitize=true">)
+
+
 ***
 
-### [COVID Test Positive Change, By Region](https://github.com/josephedwardoreilly/DataViz/tree/main/Covid_TestPos_Perc_Change) ‍ - Percentage daily change in COVID test positive rate, faceted by region (vega-lite)
-![./Covid_Map/covid_daily_perc_change.png]
-(<img src="https://raw.githubusercontent.com/josephedwardoreilly/DataViz/main/Covid_TestPos_Perc_Change/visualization.svg?sanitize=true">)
-
+### [League One 2008-09](https://github.com/josephedwardoreilly/DataViz/tree/main/Soccerbars/League1_2008_9) ‍ - Soccerbars representation of the English league one 2008-09 season (R)
+![./Covid_Map/covid_daily_perc_change.png](https://raw.githubusercontent.com/josephedwardoreilly/DataViz/main//Soccerbars/League1_2008_9/08.png)
 
 ***
