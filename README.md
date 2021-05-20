@@ -1,5 +1,5 @@
 <h1 style="font-weight:normal" align="center">
-  &nbsp;#Data Visualisation&nbsp;
+  &nbsp;Data Visualisation&nbsp;
 </h1>
 
 
@@ -18,7 +18,7 @@ A mixture of dataviz things I have worked on. Mostly R, but with a little bit of
 
 ***
 
-### [COVID Test Positive Change, By Region](https://github.com/josephedwardoreilly/DataViz/tree/main/Covid_Case_Perc_Change) ‍ - Percentage daily change in COVID test positive rate, faceted by region (vega-lite)
+### [COVID Second Wave Daily Case Change Change, By Region](https://github.com/josephedwardoreilly/DataViz/tree/main/Covid_Case_Perc_Change) ‍ - Percentage daily change in COVID test positive rate, faceted by region (vega-lite)
 (<img src="https://raw.githubusercontent.com/josephedwardoreilly/DataViz/main/Covid_Case_Perc_Change/visualization.svg?sanitize=true">)
 
 
