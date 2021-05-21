@@ -1,0 +1,13 @@
+name: Covid_Map_Shiny
+title: Covid_Map_Shiny
+username:
+account: josephedwardoreilly
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 4166290
+bundleId: 4626268
+url: https://josephedwardoreilly.shinyapps.io/Covid_Map_Shiny/
+when: 1621641373.99032
+lastSyncTime: 1621641373.99033
+asMultiple: FALSE
+asStatic: FALSE
