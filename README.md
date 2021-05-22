@@ -13,7 +13,7 @@ A mixture of dataviz things I have worked on. Mostly R, but with a little bit of
 
 ***
 
-### [COVID Daily Case Change Map](https://github.com/josephedwardoreilly/DataViz/tree/main/Covid_map) ‍ - Percentage daily change in COVID cases, presented as a hex map (R)
+### [COVID Daily Case Change Map](https://github.com/josephedwardoreilly/DataViz/tree/main/Covid_map) ‍ - Percentage daily change in COVID cases, presented as a hex map (R) [Shiny App](https://josephedwardoreilly.shinyapps.io/Covid_Map_Shiny/)
 ![./Covid_Map/covid_daily_perc_change.png](https://raw.githubusercontent.com/josephedwardoreilly/DataViz/main/Covid_Map/covid_daily_perc_change.png)
 
 ***
