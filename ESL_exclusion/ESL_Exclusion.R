@@ -3,7 +3,7 @@ library(ggplot2)
 library(ggrepel)
 library(patchwork)
 
-source('team_colors.R') # bring in the team colour tables
+source(here::here('ESL_exclusion', 'team_colors.R')) # bring in the team colour tables
 
 # Define the ESL six
 ESL <- c('Man United', 'Liverpool', 'Chelsea', 'Arsenal', 'Tottenham', 'Man City')
@@ -73,7 +73,7 @@ league.table <- function(x, ESL){
 
 
 # Read in data ------------------------------------------------------------
-wd <- getwd()
+wd <- here::here('ESL_exclusion')
 
 # Read in the post 2000 seasons, they all have the same format
 seasons <- c(0:20)
@@ -161,7 +161,7 @@ p.1 <- ggplot(
   xlab("Number Of Matches Played") + 
   labs(title = 'The EPL Without The ESL',
        subtitle = "In April 2021 six English Premier League (EPL) teams announced that they would join an emerging, automatic qualification, European Super League (ESL); outside of the control of UEFA and FIFA.\nWhich teams would have performed best if the ESL 6 (Manchester United, Manchester City, Arsenal, Chelsea, Tottenham, Liverpool) hadn't competed in the EPL following its inception in 1993-94?\nThis visualisation shows the points per game each team would have acheived plotted against the number of games the team would have played.\nThe size of each point is proportional to the per game goal difference achieved by each team.",
-       caption = "Visualisation by Joe O'Reilly - (josephedwardoreilly.github.com)") + 
+       caption = "Visualisation by Joe O'Reilly - (github.com/josephedwardoreilly)") + 
   theme(
     text = element_text(family = "DIN Next LT Pro Light"),
     plot.margin = margin(10, 4, 4, 4),
@@ -216,7 +216,7 @@ p.1 +
     clip = FALSE,
     align_to = "full") + 
   ggsave(
-    filename = 'ESL.png',
+    filename = here::here('ESL_exclusion', 'ESL.png'),
     width = 16,
     height = 11,
     device = 'png')

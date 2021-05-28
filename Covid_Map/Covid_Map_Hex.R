@@ -5,25 +5,25 @@ library(viridis)
 library(sf)
 
 # Read and wrangle the case data
-x <- fread("ltla_2021-05-17_Cases.csv")
+x <- fread(here::here('Covid_Map', "ltla_2021-05-17_Cases.csv"))
 x <- x[date == '2020-12-04']
 x[, Lacode := areaCode]
 x[, `% Change In Number Of New Cases` := newCasesBySpecimenDateChangePercentage]
 
 # Read and prep the shape data
 Background <- st_read(
-  "LocalAuthorities-lowertier.gpkg",
+  here::here('Covid_Map', "LocalAuthorities-lowertier.gpkg"),
   layer="7 Background")
 
 # Prep the label alignment
 Group_labels <- st_read(
-  "LocalAuthorities-lowertier.gpkg",
+  here::here('Covid_Map', "LocalAuthorities-lowertier.gpkg"),
   layer="1 Group labels") %>% 
   mutate(just=if_else(LabelPosit=="Left", 0, 1))
 
 # merge on the case data to the shapes
 ltladata <- st_read(
-  "LocalAuthorities-lowertier.gpkg",
+  here::here('Covid_Map', "LocalAuthorities-lowertier.gpkg"),
   layer="4 LTLA-2019") %>% 
   left_join(x, by="Lacode")
 
@@ -52,7 +52,7 @@ ggplot()+
     title.position = 'top')) + 
   theme_void() +
   labs(title = 'Percentage Change In Daily Covid-19 Infections\nBy Lower Tier Local Authority\n(2020-12-04)',
-       caption = "Visualisation by Joe O'Reilly (josephedwardoreilly.github.com)") + 
+       caption = "Visualisation by Joe O'Reilly (github.com/josephedwardoreilly)") + 
   theme(
     plot.background = element_rect(fill = '#19323C'),
     legend.justification = 'top',
@@ -84,7 +84,9 @@ ggplot()+
     labels = c('Less than -100 %', '0 %', 'Greater than 100 %'),
     limits = c(-100, 100), oob = scales::squish) +
   ggsave(
-    filename = 'covid_daily_perc_change.png',
+    filename = here::here(
+      'Covid_Map',
+      'covid_daily_perc_change.png'),
     width = 6, 
     height = 8,
     device = 'png')

@@ -223,7 +223,7 @@ data.prep <- function(team = 'Scunthorpe', dt){
 
 
 # Clean Data --------------------------------------------------------------
-x <- fread("E2.csv")
+x <- fread(here::here('Soccerbars', 'League1_2008_9', "E2.csv"))
 
 width = .35 # width of bars
 
@@ -246,7 +246,7 @@ teams <- rev(league.table$team) # order teams by final position
 plot.data <- plot.data[match(teams, names(plot.data))]
 
 # source the team colour pal 
-source('team_colours.R')
+source(here::here('Soccerbars', 'League1_2008_9','team_colours.R'))
 
 pal.teams <- pal.teams[match(teams, names(pal.teams))]
 
@@ -361,7 +361,7 @@ p.title <- ggplot() +
     data = data.frame(
       x = 37,
       y = -0.6,
-      label = "Visualisation by Joe O'Reilly - josephedwardoreilly.github.com\nsoccerbars : https://sn.ethz.ch/research/soccerbars.html"),
+      label = "Visualisation by Joe O'Reilly - github.com/josephedwardoreilly\nsoccerbars : https://sn.ethz.ch/research/soccerbars.html"),
     aes(x, y, label = label),
     color = 'grey50',
     family = "DIN Next LT Pro Light" ,
@@ -387,7 +387,7 @@ p.title <- p.title + inset_element(
 # Wrap all of the individual plots together and save to disk
 all.p <- c(list(p.title), p)
 wrap_plots(all.p,ncol = 1, heights = 0.5) + 
-  ggsave(filename = '08.png',
+  ggsave(filename = here::here('Soccerbars', 'League1_2008_9','08.png'),
     width = 8, height = 50, device = 'png', limitsize = FALSE)
 
 

@@ -6,16 +6,17 @@ library(sf)
 library(patchwork)
 library(cowplot)
 library(ggtext)
+library(biscale)
 
-
+extrafont::loadfonts()
 
 # Read area mapping data
-x <- fread('OA_MSOA_LSOA_LA_SCOTLAND.csv')
+x <- fread(here::here('SIMD_2020', 'OA_MSOA_LSOA_LA_SCOTLAND.csv'))
 # Just LSOA, MSOA, and LA
 x <- x[, .(LSOA11CD, LSOA11NM, MSOA11CD,  MSOA11NM, LAD17CD, LAD17NM)]
 
 # Read SIMD data
-y <- fread('SIMD2020.csv')
+y <- fread(here::here('SIMD_2020', 'SIMD2020.csv'))
 y[, LSOA11CD := Data_Zone] # Add column for LSOA
 
 # Merge SIMD and area data
@@ -76,12 +77,12 @@ z.summ <- z[, .(
 
 # Read and prep the shape data
 Background <- st_read(
-  "LocalAuthorities-lowertier.gpkg",
+  here::here('SIMD_2020',"LocalAuthorities-lowertier.gpkg"),
   layer="7 Background") %>% filter(Name == 'Scotland')
 
 # Prep the label alignment
 Group_labels <- st_read(
-  "LocalAuthorities-lowertier.gpkg",
+  here::here('SIMD_2020',"LocalAuthorities-lowertier.gpkg"),
   layer="1 Group labels") %>% 
   filter(RegionNation == 'Scotland') %>%
   # Reformat some labels to fit onto plots nicely
@@ -100,7 +101,7 @@ Group_labels <- st_read(
 
 # merge on the case data to the shapes
 ltladata <- st_read(
-  "LocalAuthorities-lowertier.gpkg",
+  here::here('SIMD_2020',"LocalAuthorities-lowertier.gpkg"),
   layer="4 LTLA-2019") %>% 
   filter(RegionNation == 'Scotland') %>%
   left_join(z.summ, by="Laname")
@@ -348,7 +349,7 @@ p.text.body +
               6789", heights = c(.5,1,1)) +
   # Exploit plot_annotation to colour the background fully
   plot_annotation(
-    caption = "Visualisation by Joe O'Reilly (josephedwardoreilly.github.com)",
+    caption = "Visualisation by Joe O'Reilly (github.com/josephedwardoreilly)",
     theme = theme(
       plot.margin = margin(5, 10, 5, 10),
       plot.caption = element_text(
@@ -358,7 +359,12 @@ p.text.body +
       plot.background = element_rect(
         fill = '#DDE3E3',
         color = NA))) + 
-    ggsave(filename = 'SIMD_Disparity.png', device = 'png', width = 18, height = 12)
+    ggsave(
+      filename = here::here('SIMD_2020', 'SIMD_Disparity.png'),
+      device = 'png',
+      width = 18,
+      height = 12)
+
 
 
 
