@@ -5,6 +5,9 @@
 
 A mixture of dataviz things I have worked on. Mostly R, but with a little bit of vega-lite and d3.js thrown in too. 
 
+![./collage.png](https://raw.githubusercontent.com/josephedwardoreilly/TidyTuesday/master/collage.png)
+
+
 ***
 
 ### [SIMD Domain Differences](https://github.com/josephedwardoreilly/DataViz/tree/main/SIMD_2020) ‍ - Differences in SIMD Ranking By Domain (R)
