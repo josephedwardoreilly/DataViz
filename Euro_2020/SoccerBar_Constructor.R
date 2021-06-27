@@ -214,7 +214,7 @@ data.prep <- function(team = 'Scunthorpe', dt){
   output$point <- dt.points
   output$pts <- z[, (sum(gf > ga) * 3) + sum(gf == ga)] # season points
   output$gd <- z[, sum(gf) - sum(ga)] # season goal diff.
-  
+  output$gp <- dt.polygons[, max(id)]
   
   return(output)
   
@@ -237,9 +237,10 @@ names(plot.data) <- teams
 league.table <- data.table(
   team = teams,
   pts = sapply(plot.data, "[[", "pts"),
-  gd = sapply(plot.data, "[[", "gd"))
-# Correctly order the table
-setkey(league.table, pts, gd)
+  gd = sapply(plot.data, "[[", "gd"),
+  gp = sapply(plot.data, "[[", "gp"))
+# Correctly order the table, key on games played too to reflect knockout progress
+setkey(league.table, gp, pts, gd)
 teams <- rev(league.table$team) # order teams by final position
 
 # Order the list to match the league table 
