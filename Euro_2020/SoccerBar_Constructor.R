@@ -112,7 +112,7 @@ build.plot <- function(plot.data){
     scale_x_continuous(
       expand = c(0, 0),
       limits = as.numeric(
-        dt.polygons[, c(min(md), max(id) + 1)])) + 
+        dt.polygons[, c(min(md), max(id) + 1.5)])) + 
     coord_equal(clip = 'off') + 
     guides(color = FALSE,
            fill = FALSE) +
